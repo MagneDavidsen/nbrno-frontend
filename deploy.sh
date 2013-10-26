@@ -9,7 +9,7 @@ default_username=deploy.sh
 default_email=
 
 #repository to deploy to. must be readable and writable.
-repo=origin
+repo=heroku
 
 if [[ $1 = "-v" || $1 = "--verbose" ]]; then
 	verbose=true
@@ -25,6 +25,7 @@ function enable_expanded_output {
 
 #this is used to avoid outputting the repo URL, which may contain a secret token
 function disable_expanded_output {
+
 	if [ $verbose ]; then
 		set +o xtrace
 		set -o verbose
