@@ -247,9 +247,6 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'Procfile',
-            'web.js',
-            'package.json',
             'bower_components/**/*',
             'images/{,*/}*.{gif,webp}',
             'styles/fonts/*'
@@ -261,6 +258,18 @@ module.exports = function (grunt) {
           src: [
             'generated/*'
           ]
+        }, {
+          expand: true,
+          dest: '<%= yeoman.dist %>',
+          cwd: 'heroku',
+          src: '*',
+          rename: function (dest, src) {
+            var path = require('path');
+            if (src === 'distpackage.json') {
+              return path.join(dest, 'package.json');
+            }
+            return path.join(dest, src);
+          }
         }]
       },
       styles: {
@@ -269,23 +278,6 @@ module.exports = function (grunt) {
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       }
-    },
-    copy: {
-        dist: {
-            files: [{
-                expand: true,
-                dest: '<%= yeoman.dist %>',
-                cwd: 'heroku',
-                src: '*',
-                rename: function (dest, src) {
-                    var path = require('path');
-                    if (src === 'distpackage.json') {
-                        return path.join(dest, 'package.json');
-                    }
-                    return path.join(dest, src);
-                }
-            }]
-        }
     },
     concurrent: {
       server: [
