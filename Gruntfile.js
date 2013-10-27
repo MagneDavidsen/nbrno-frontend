@@ -249,6 +249,7 @@ module.exports = function (grunt) {
             '.htaccess',
             'Procfile',
             'web.js',
+            'package.json',
             'bower_components/**/*',
             'images/{,*/}*.{gif,webp}',
             'styles/fonts/*'
