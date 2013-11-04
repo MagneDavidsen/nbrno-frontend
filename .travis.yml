@@ -5,8 +5,9 @@ node_js:
 before_script:
 - npm install -g bower grunt-cli
 - bower install
-after-success:
+deploy:
   api_key:
     secure: ACeugC7AMroaK77IwGd/hrsWqudqU7HK2BbxIc/MkfxpqihwypVn3nFc3qquNiT0TIAele2bJlZnqwKzoFP5HXfcuegI/dJul+pcG7l427jNTqYZ1b0reUUS432I/SSHg7Rk7ywTd5FA1AYzJoDfT5AYVXfQ5m47a9giqDXBzh8=
+after_success:  
   - git remote add heroku git@heroku.com:guarded-savannah-5374.git
   - git subtree push --prefix dist heroku master
