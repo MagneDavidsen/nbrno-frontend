@@ -6,6 +6,35 @@ body {
     color: #333;
 }
 
+div.rapperList{
+    background: #FFFF00;
+    div.rapperRow{
+        overflow: hidden;
+        width: 100%;
+        //background:  #FF0000;
+        clear: both
+        display: block;
+        div{
+            width: 100px;
+            float: left;
+            &.rapperPosition{
+                //float: none;
+                clear: left;
+            }
+            &.rapperName{
+                background: #00FF00;    
+            }
+            &.rapperVoteButtons{
+                background: #0000FF;
+                //float: none;
+
+            }
+            
+        }
+    }
+}
+
+
 .hero-unit {
     margin: 50px auto 0 auto;
     width: 800px;
