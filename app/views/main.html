@@ -1,11 +1,9 @@
 <div class="hero-unit">
   <h1>norgesbesterapper.no</h1>
-  <p>You now have</p>
+  
   <div class="rapperList">
-      <div class="rapperRow" ng-repeat="rapper in rappers | orderBy:predicate:true">
-      	<div class="rapperPosition">#{{$index + 1}}</div><div class="rapperName">{{rapper.name}}</div><div class="rapperVoteButtons">Tommel opp</div>
+      <div class="rapperRow" ng-repeat="rapper in rappersAndVotes.rappers | orderBy:predicate:true">
+      	<div class="rapperPosition">#{{$index + 1}}</div><div class="rapperName">{{rapper.name}}</div><div class="rapperVoteButtons">Tommel ned</div><div class="rapperVoteButtons">Tommel opp</div>
       </div>
   </div>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
 </div>

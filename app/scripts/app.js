@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('nbrnoFrontendApp', [])
-  .config(function ($routeProvider) {
+angular.module('nbrnoFrontendApp', ['rapperServices', 'ngRoute'])
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -10,4 +10,4 @@ angular.module('nbrnoFrontendApp', [])
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }]);
