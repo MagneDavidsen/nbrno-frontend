@@ -1,62 +1,60 @@
-<div class="page-header" ng-controller="LoginCtrl" >
+<div class="page-header">
+    <div class="loggedinbar" ng-show="loggedIn">
+        Du er logget inn som <b>{{loginUser}}</b> - <a  href="#" ng-click="logout()">Logg ut</a>
+    </div>
 
-        <div class="loggedinbar container" ng-show="loggedIn">
-            Du er logget inn som <b>{{loginUser}}</b> - <a  href="#" ng-click="logout()">Logg ut</a>
-        </div>
+    <div class="loggedoutbar" ng-show="!loggedIn && !loginVisible">
+        <a href="" ng-click="showLogin()">Logg inn</a>
+    </div>
 
-        <div class="loggedoutbar container" ng-show="!loggedIn && !showLogin">
-            <a  href="#" ng-click="showLogin=true">Logg inn</a>
-        </div>
+    <div ng-show="loginVisible">
+        <div class="login-panel">
+            <h1 class="text-center">Du må logge inn for å stemme</h1>
 
-        <div class="container" ng-show="showLogin">
-            <div class="row">
-                <h1 class="text-center">Du må logge inn for å stemme</h1>
-
-                <div class="span5 login-form">
-                    <div class="control-group">
-                        <input type="text" class="login-field" value="" placeholder="Brukernavn" id="login-name"
-                               ng-model="loginUser">
-                        <label class="login-field-icon fui-user" for="login-name"></label>
-                    </div>
-
-                    <div class="control-group">
-                        <input type="password" class="login-field" value="" placeholder="Passord" id="login-pass"
-                               ng-model="loginPassword">
-                        <label class="login-field-icon fui-lock" for="login-pass"></label>
-                    </div>
-
-                    <span>{{error}}</span>
-
-                    <a class="btn btn-primary btn-large btn-block" href="" ng-click="login()">Logg inn</a>
-                    <a class="login-link" href="#">Glemt passord?</a>
-                    <span></span>
+            <div class="login-form">
+                <div class="control-group">
+                    <input type="text" class="login-field" value="" placeholder="Brukernavn" id="login-name"
+                    ng-model="loginUser">
+                    <label class="login-field-icon fui-user" for="login-name"></label>
                 </div>
 
-                <div class="span5 login-form">
-                    <div class="control-group">
-                        <input type="text" class="login-field" value="" placeholder="Brukernavn" id="signup-name"
-                               ng-model="signupUser">
-                        <label class="login-field-icon fui-user" for="login-name"></label>
-                    </div>
-
-                    <div class="control-group">
-                        <input type="text" class="login-field" value="" placeholder="E-post (valgfritt)" id="signup-email"
-                               ng-model="signupEmail">
-                        <label class="login-field-icon fui-mail" for="login-name"></label>
-                    </div>
-
-                    <div class="control-group">
-                        <input type="password" class="login-field" value="" placeholder="Passord" id="signup-pass"
-                               ng-model="signupPassword">
-                        <label class="login-field-icon fui-lock" for="login-pass"></label>
-                    </div>
-
-                    <a class="btn btn-primary btn-large btn-block" href="" ng-click="signup()">Lag ny konto</a>
-
-                    <span></span>
+                <div class="control-group">
+                    <input type="password" class="login-field" value="" placeholder="Passord" id="login-pass"
+                    ng-model="loginPassword">
+                    <label class="login-field-icon fui-lock" for="login-pass"></label>
                 </div>
+
+                <span>{{error}}</span>
+
+                <a class="btn btn-primary btn-large btn-block" href="" ng-click="login()">Logg inn</a>
+                <a class="login-link" href="#">Glemt passord?</a>
+                <span></span>
             </div>
 
+            <div class="login-form">
+                <div class="control-group">
+                    <input type="text" class="login-field" value="" placeholder="Brukernavn" id="signup-name"
+                    ng-model="signupUser">
+                    <label class="login-field-icon fui-user" for="login-name"></label>
+                </div>
+
+                <div class="control-group">
+                    <input type="text" class="login-field" value="" placeholder="E-post (valgfritt)" id="signup-email"
+                    ng-model="signupEmail">
+                    <label class="login-field-icon fui-mail" for="login-name"></label>
+                </div>
+
+                <div class="control-group">
+                    <input type="password" class="login-field" value="" placeholder="Passord" id="signup-pass"
+                    ng-model="signupPassword">
+                    <label class="login-field-icon fui-lock" for="login-pass"></label>
+                </div>
+
+                <a class="btn btn-primary btn-large btn-block" href="" ng-click="signup()">Lag ny konto</a>
+
+                <span></span>
+            </div>
         </div>
 
     </div>
+</div>

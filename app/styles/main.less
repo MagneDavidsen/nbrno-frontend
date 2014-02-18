@@ -1,9 +1,25 @@
 @background: #4D926F;
+@second-background: #eee;
+@form-color: #eee;
+@firm: blue;
+@gray: #ddd;
+@inverse: #eee;
+
+.transition(@properties) {
+  -webkit-transition: @properties;
+     -moz-transition: @properties;
+       -o-transition: @properties;
+          transition: @properties;
+  -webkit-backface-visibility: hidden;
+}
 
 body {
-    background: @background;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    //font-family: "Pathway Gothic One", Helvetica, Arial, sans-serif;
+    //font-family: "Carrois Gothic", Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     color: #333;
+    margin: 0px;
 }
 
 div.rapperList{
@@ -15,25 +31,59 @@ div.rapperList{
         clear: both
         display: block;
         div{
-            width: 100px;
+            
             float: left;
             &.rapperPosition{
+                width: 50px;
                 //float: none;
                 clear: left;
             }
+
             &.rapperName{
-                background: #00FF00;    
+              
+              text-align: center;
+              background: #00FF00;  
+
+              & hr{
+                background: #333;
+                border: 0;
+                height: 2px;
+                margin: 12px auto 8px;
+                width: 60px;
+
+              }
+
+              & h1{
+                width: 200px;
+                font-family: 'pt sans narrow';
+                text-transform:uppercase;
+                font-size: 24px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 700;
+                line-height: 24px;
+                  
+                }
+
+                & h2{
+                width: 200px;
+                font-family: 'pt sans';
+                font-size: 16px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 700;
+                line-height: 20px;
+    
+                }
             }
             &.rapperVoteButtons{
                 background: #0000FF;
                 float: right;
 
             }
-            
         }
     }
 }
-
 
 .hero-unit {
     margin: 50px auto 0 auto;
@@ -49,4 +99,87 @@ div.rapperList{
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+}
+
+
+.page-header{
+    background: @gray;
+    overflow: auto;
+    text-align: center;
+}
+
+
+// LOGIN FORM
+// -----------
+
+.login-panel{
+    
+    text-align: center;
+    padding: 10px;
+    clear: both;
+    overflow: auto;
+    width: 940px;
+    display: block;
+    margin: 0 auto 0 auto;
+
+}
+
+.login-form {
+  background-color: @form-color;
+  padding: 24px 23px 20px;
+  margin: 35px;
+  position: relative;
+  width: 350px;
+  float: left;
+
+  .control-group {
+    margin-bottom: 6px;
+    position: relative;
+  }
+  .login-field {
+    border-color: transparent;
+    font-size: 17px;
+    padding-bottom: 11px;
+    padding-top: 11px;
+    text-indent: 3px;
+    width: 299px;
+    margin-bottom: 10px !important; 
+    
+    &:focus {
+      & + .login-field-icon {
+        color: @firm;
+      }  
+    }    
+  }
+  .login-field-icon {
+    color: mix(@gray, @inverse, 60%);
+    font-size: 16px;
+    position: absolute;
+    right: 13px;
+    top: 14px;
+    .transition(.25s);
+  }  
+}
+
+.login-link {
+  color: mix(@gray, @inverse, 60%);
+  display: block;
+  font-size: 13px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+
+.loggedinbar{
+     padding-bottom: 5px;
+     padding-top: 5px;
+     text-align: right;
+     background: @second-background;
+ }
+
+.loggedoutbar{
+    padding-bottom: 5px;
+    padding-top: 5px;
+    text-align: left;
+    background: @second-background;
 }
