@@ -1,3 +1,6 @@
+@import "button.less";
+
+
 @background: #4D926F;
 @second-background: #eee;
 @form-color: #eee;
@@ -13,6 +16,12 @@
   -webkit-backface-visibility: hidden;
 }
 
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+
+
 body {
 
     //font-family: "Pathway Gothic One", Helvetica, Arial, sans-serif;
@@ -24,61 +33,90 @@ body {
 
 div.rapperList{
     background: #FFFF00;
+    display: table;
+    width: 100%;
     div.rapperRow{
         overflow: hidden;
-        width: 100%;
+
         //background:  #FF0000;
-        clear: both
-        display: block;
+        clear: both;
+        padding: 0px;
+        display: table-row;
         div{
-            
-            float: left;
+          display: table-cell;
+            margin: 0px;
+            height: 100%;
+            min-height: 100%;
+
+            overflow: hidden;
             &.rapperPosition{
-                width: 50px;
-                //float: none;
-                clear: left;
-            }
+                background: #FF0000;
+                width: 10%;
+                text-align: center;
+                vertical-align: middle;
 
-            &.rapperName{
-              
-              text-align: center;
-              background: #00FF00;  
-
-              & hr{
-                background: #333;
-                border: 0;
-                height: 2px;
-                margin: 12px auto 8px;
-                width: 60px;
-
-              }
-
-              & h1{
-                width: 200px;
                 font-family: 'pt sans narrow';
                 text-transform:uppercase;
-                font-size: 24px;
+                font-size: 32px;
                 font-style: normal;
                 font-variant: normal;
                 font-weight: 700;
                 line-height: 24px;
+
+            }
+
+            &.rapperName{
+              width: 70%;
+              text-align: center;
+              background: #00FF00;
+
+                & h1{
+
+                font-family: 'pt sans narrow';
+                text-transform:uppercase;
+                font-size: 32px;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: 700;
+                line-height: 24px;
+                letter-spacing: 3px;
+                
                   
                 }
 
                 & h2{
-                width: 200px;
+                  display: inline-block;
                 font-family: 'pt sans';
                 font-size: 16px;
                 font-style: normal;
                 font-variant: normal;
                 font-weight: 700;
                 line-height: 20px;
-    
-                }
+                float: left;
+                vertical-align: bottom;    
+                
+              }
             }
-            &.rapperVoteButtons{
-                background: #0000FF;
-                float: right;
+
+            &.rapperVoteButton{
+                width: 10%;
+                text-align: center;
+                vertical-align: middle;
+
+                & a {
+                  display: inline-block;
+                  vertical-align: middle;
+                  width: 100%;
+                  height: 100%;
+                  font-size: 25pt;
+                  color: #FFF;
+                  background: #CCC;
+                  text-decoration: none;
+                }
+
+                & a:hover{
+                  background: #DDD;
+                }
 
             }
         }
