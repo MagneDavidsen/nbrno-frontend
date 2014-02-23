@@ -1,18 +1,27 @@
 @import "button.less";
 
-
-@background: #4D926F;
+@background: #DDD;
 @second-background: #eee;
-@form-color: #eee;
+@form-color: #EEE;
 @firm: blue;
 @gray: #ddd;
-@inverse: #eee;
+@inverse: #333;
+
+@rapper-background: #007F91;
+@position-background: #00535E;
+
+@vote-button: #5ABAC8;
+@vote-button-hover: #5ec3d2;
+@voteup-background: #037621;
+@voteup-background-hover: #37A654;
+@votedown-background: #9E1604;
+@votedown-background-hover: #C04E40;
 
 .transition(@properties) {
   -webkit-transition: @properties;
-     -moz-transition: @properties;
-       -o-transition: @properties;
-          transition: @properties;
+  -moz-transition: @properties;
+  -o-transition: @properties;
+  transition: @properties;
   -webkit-backface-visibility: hidden;
 }
 
@@ -21,137 +30,154 @@
 }
 
 
-
 body {
-
-    //font-family: "Pathway Gothic One", Helvetica, Arial, sans-serif;
-    //font-family: "Carrois Gothic", Helvetica, Arial, sans-serif;
-    font-family: Helvetica, Arial, sans-serif;
-    color: #333;
-    margin: 0px;
+  font-family: 'pt sans';
+  font-size: 15pt;
+  color: @inverse;
+  margin: 0px;
 }
 
 div.rapperList{
-    background: #FFFF00;
-    display: table;
-    width: 100%;
-    div.rapperRow{
-        overflow: hidden;
+  background: #FFFF00;
+  display: table;
+  width: 100%;
+  div.rapperRow{
+    overflow: hidden;
+    clear: both;
+    padding: 3px;
+    display: table-row;
+    div{
+      display: table-cell;
+      border-bottom: 1px solid black;
+      margin: 0px;
+      height: 100%;
+      min-height: 100%;
+      margin: 20px;
 
-        //background:  #FF0000;
-        clear: both;
-        padding: 0px;
-        display: table-row;
-        div{
-          display: table-cell;
-            margin: 0px;
-            height: 100%;
-            min-height: 100%;
+      overflow: hidden;
+      &.rapperPosition{
+        background: @position-background;
+        width: 10%;
+        text-align: center;
+        vertical-align: middle;
+        color: #FFF;
 
-            overflow: hidden;
-            &.rapperPosition{
-                background: #FF0000;
-                width: 10%;
-                text-align: center;
-                vertical-align: middle;
+        font-family: 'pt sans narrow';
+        text-transform:uppercase;
+        font-size: 32px;
+        font-style: normal;
+        font-variant: normal;
+        font-weight: 700;
+        line-height: 24px;
 
-                font-family: 'pt sans narrow';
-                text-transform:uppercase;
-                font-size: 32px;
-                font-style: normal;
-                font-variant: normal;
-                font-weight: 700;
-                line-height: 24px;
+      }
 
-            }
+      &.rapperName{
+        width: 70%;
+        text-align: center;
+        background: @rapper-background;
+        color: #FFF;
 
-            &.rapperName{
-              width: 70%;
-              text-align: center;
-              background: #00FF00;
+        & h1{
 
-                & h1{
-
-                font-family: 'pt sans narrow';
-                text-transform:uppercase;
-                font-size: 32px;
-                font-style: normal;
-                font-variant: normal;
-                font-weight: 700;
-                line-height: 24px;
-                letter-spacing: 3px;
-                
-                  
-                }
-
-                & h2{
-                  display: inline-block;
-                font-family: 'pt sans';
-                font-size: 16px;
-                font-style: normal;
-                font-variant: normal;
-                font-weight: 700;
-                line-height: 20px;
-                float: left;
-                vertical-align: bottom;    
-                
-              }
-            }
-
-            &.rapperVoteButton{
-                width: 10%;
-                text-align: center;
-                vertical-align: middle;
-
-                & a {
-                  display: inline-block;
-                  vertical-align: middle;
-                  width: 100%;
-                  height: 100%;
-                  font-size: 25pt;
-                  color: #FFF;
-                  background: #CCC;
-                  text-decoration: none;
-                }
-
-                & a:hover{
-                  background: #DDD;
-                }
-
-            }
+          font-family: 'pt sans narrow';
+          text-transform:uppercase;
+          font-size: 32px;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: 700;
+          line-height: 24px;
+          letter-spacing: 3px;
         }
+
+        & h2{
+          display: inline-block;
+          font-family: 'pt sans';
+          font-size: 16px;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: 700;
+          line-height: 20px;
+          float: left;
+          vertical-align: bottom;    
+        }
+      }
+
+      &.rapperVoteButton{
+        width: 10%;
+        text-align: center;
+        vertical-align: middle;
+
+        & a {
+          display: inline-block;
+          vertical-align: middle;
+          width: 100%;
+          height: 100%;
+          font-size: 25pt;
+          color: #FFF;
+          background: @vote-button;
+          text-decoration: none;
+          font-weight: bold;
+          cursor: pointer;
+          line-height: 68px;
+
+          &:hover{
+            background: @vote-button-hover;
+          }
+
+          &.voted-up{
+            background: @voteup-background;
+            &:hover{
+              background: @voteup-background-hover;
+            }
+
+          }
+
+          &.voted-down{
+            background: @votedown-background;
+            &:hover{
+              background: @votedown-background-hover;
+            }
+          }
+
+        }
+
+
+
+      }
     }
+  }
 }
 
 .hero-unit {
-    margin: 50px auto 0 auto;
-    width: 800px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    padding: 60px;
+  margin: 30px auto 0 auto;
+  width: 800px;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 30px;
+  background-color: @background;
+  padding: 10px 60px 60px 60px;
 }
 
 .hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
 }
 
 
 .page-header{
-    background: @gray;
-    overflow: auto;
-    text-align: center;
+  background: @gray;
+  overflow: auto;
+  text-align: center;
 }
 
 
-// LOGIN FORM
-// -----------
+  // LOGIN FORM
+  // -----------
 
-.login-panel{
-    
+  .login-panel{
+
     text-align: center;
     padding: 10px;
     clear: both;
@@ -160,64 +186,68 @@ div.rapperList{
     display: block;
     margin: 0 auto 0 auto;
 
-}
+  }
 
-.login-form {
-  background-color: @form-color;
-  padding: 24px 23px 20px;
-  margin: 35px;
-  position: relative;
-  width: 350px;
-  float: left;
-
-  .control-group {
-    margin-bottom: 6px;
+  .login-form {
+    background-color: @form-color;
+    padding: 30px;
+    margin: 20px;
     position: relative;
+    left: 10px;
+    width: 350px;
+    float: left;
+
+    .control-group {
+      margin-bottom: 6px;
+      position: relative;
+    }
+    .login-field {
+      border-color: transparent;
+      font-size: 17px;
+      padding-bottom: 11px;
+      padding-top: 11px;
+      text-indent: 3px;
+      width: 299px;
+      margin-bottom: 10px !important; 
+      
+      &:focus {
+        & + .login-field-icon {
+          color: @firm;
+        }  
+      }    
+    }
+    .login-field-icon {
+      color: mix(@gray, @inverse, 60%);
+      font-size: 16px;
+      position: absolute;
+      right: 13px;
+      top: 14px;
+      .transition(.25s);
+    }  
   }
-  .login-field {
-    border-color: transparent;
-    font-size: 17px;
-    padding-bottom: 11px;
-    padding-top: 11px;
-    text-indent: 3px;
-    width: 299px;
-    margin-bottom: 10px !important; 
-    
-    &:focus {
-      & + .login-field-icon {
-        color: @firm;
-      }  
-    }    
-  }
-  .login-field-icon {
+
+  .login-link {
     color: mix(@gray, @inverse, 60%);
-    font-size: 16px;
-    position: absolute;
-    right: 13px;
-    top: 14px;
-    .transition(.25s);
-  }  
-}
-
-.login-link {
-  color: mix(@gray, @inverse, 60%);
-  display: block;
-  font-size: 13px;
-  margin-top: 15px;
-  text-align: center;
-}
+    display: block;
+    font-size: 13px;
+    margin-top: 15px;
+    text-align: center;
+  }
 
 
-.loggedinbar{
-     padding-bottom: 5px;
-     padding-top: 5px;
-     text-align: right;
-     background: @second-background;
+  .loggedinbar{
+   padding-bottom: 5px;
+   padding-top: 5px;
+
+   text-align: right;
+   background: @second-background;
  }
 
-.loggedoutbar{
-    padding-bottom: 5px;
-    padding-top: 5px;
-    text-align: left;
-    background: @second-background;
+ .loggedoutbar{
+
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 25px;
+  text-align: left;
+  background: @second-background;
 }
