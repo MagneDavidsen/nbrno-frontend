@@ -1,14 +1,14 @@
 <div class="page-header">
     <div class="loggedinbar" ng-show="loggedIn">
-        Du er logget inn som <b>{{loginUser}}</b> - <a  href="#" ng-click="logout()">Logg ut</a>
+        Du er logget inn som <b>{{loginUser}}</b> - <a class="btn btn-primary btn-large btn-block" ng-click="logout()">Logg ut</a>
     </div>
 
     <div class="loggedoutbar" ng-show="!loggedIn && !eventBus.loginVisible">
-        <a class="btn btn-primary btn-large btn-block" href="" ng-click="showLogin()">Logg inn</a>
+        <a class="btn btn-primary btn-large btn-block" ng-click="showLogin()">Logg inn</a>
     </div>
 
-    <div ng-show="eventBus.loginVisible">
-        <div class="login-panel">
+    <div class="login-panel"  ng-show="eventBus.loginVisible">
+
             <h1 class="text-center">Du må logge inn for å stemme</h1>
 
             <div class="login-form">
@@ -24,10 +24,7 @@
                     <label class="login-field-icon fui-lock" for="login-pass"></label>
                 </div>
 
-                <span>{{error}}</span>
-
-                <a class="btn btn-primary btn-large btn-block" href="" ng-click="login()">Logg inn</a>
-                <a class="login-link" href="#">Glemt passord?</a>
+                <a class="btn btn-primary btn-large btn-block" ng-click="login()">Logg inn</a>
                 <span></span>
             </div>
 
@@ -51,10 +48,7 @@
                 </div>
 
                 <a class="btn btn-primary btn-large btn-block" href="" ng-click="signup()">Lag ny konto</a>
-
-                <span></span>
             </div>
-        </div>
-
+        <div class="error">{{error}}</div>
     </div>
 </div>

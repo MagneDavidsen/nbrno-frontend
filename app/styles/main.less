@@ -1,5 +1,6 @@
 @import "button.less";
 
+@site-width: 800px;
 @background: #DDD;
 @second-background: #eee;
 @form-color: #EEE;
@@ -36,6 +37,10 @@ body {
   color: @inverse;
   margin: 0px;
 }
+
+div.error{
+    padding-bottom: 15px;
+  }
 
 div.rapperList{
   background: #FFFF00;
@@ -139,11 +144,7 @@ div.rapperList{
               background: @votedown-background-hover;
             }
           }
-
         }
-
-
-
       }
     }
   }
@@ -151,7 +152,7 @@ div.rapperList{
 
 .hero-unit {
   margin: 30px auto 0 auto;
-  width: 800px;
+  width: @site-width - 120px;
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
@@ -169,33 +170,33 @@ div.rapperList{
 .page-header{
   background: @gray;
   overflow: auto;
-  text-align: center;
+  text-align: center;  
 }
-
 
   // LOGIN FORM
   // -----------
 
   .login-panel{
-
-    text-align: center;
-    padding: 10px;
+      margin: 0 auto 0 auto;
+    width: @site-width;
     clear: both;
     overflow: auto;
-    width: 940px;
     display: block;
-    margin: 0 auto 0 auto;
+
 
   }
 
   .login-form {
     background-color: @form-color;
     padding: 30px;
-    margin: 20px;
     position: relative;
-    left: 10px;
-    width: 350px;
+    width: 330px;
     float: left;
+    margin-bottom:20px;
+
+    &:nth-of-type(1){
+      margin-right: 20px;
+    }
 
     .control-group {
       margin-bottom: 6px;
@@ -236,18 +237,17 @@ div.rapperList{
 
 
   .loggedinbar{
+    margin: 0 auto 0 auto;
+  width: @site-width;
    padding-bottom: 5px;
    padding-top: 5px;
-
    text-align: right;
-   background: @second-background;
  }
 
  .loggedoutbar{
-
+  margin: 0 auto 0 auto;
+  width: @site-width;
   padding-bottom: 5px;
   padding-top: 5px;
-  padding-left: 25px;
   text-align: left;
-  background: @second-background;
 }
