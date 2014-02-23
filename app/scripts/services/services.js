@@ -6,7 +6,7 @@ var userServices = angular.module('userServices', ['ngResource']);
 var eventBus = angular.module('eventBus', []);
 
 
-var endpoint = 'http://localhost:8081/api/';
+var endpoint = 'http://nbrno-backend.herokuapp.com/api/';
 
 commonServices.factory('Common', function (Rapper, EventBus) {
 
