@@ -66,6 +66,9 @@ module.exports = function (grunt) {
       },
       'git-commit-build': {
         command: 'git commit -am"build"'
+      },
+      'heroku': {
+      command: 'git push heroku master'
       }
     },
     autoprefixer: {
@@ -381,6 +384,8 @@ module.exports = function (grunt) {
     'connect:test',
     'karma'
   ]);
+
+  grunt.registerTask('heroku', ['build', 'shell:heroku']);
 
   grunt.registerTask('build', [
     'clean:dist',
