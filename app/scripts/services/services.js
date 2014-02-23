@@ -36,8 +36,8 @@ commonServices.factory('Common', function (Rapper, EventBus) {
 
   var sendVote = function(rapperId, voteUp){
     var votedSuccess = function(){
-      for(var i = 0; i < EventBus.rappersAndVotes.length; i++){
-        if(EventBus.rappersAndVotes[i].id == rapperId) EventBus.rappersAndVotes[i].rating = voteUp ? 1 : -1;
+      for(var i = 0; i < EventBus.rappersAndVotes.rappers.length; i++){
+        if(EventBus.rappersAndVotes.rappers[i].id == rapperId) EventBus.rappersAndVotes.rappers[i].rating = voteUp ? 1 : -1;
       }
       console.log("voted")
     }
