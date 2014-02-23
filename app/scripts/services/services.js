@@ -5,8 +5,7 @@ var rapperServices = angular.module('rapperServices', ['ngResource']);
 var userServices = angular.module('userServices', ['ngResource']);
 var eventBus = angular.module('eventBus', []);
 
-
-var endpoint = 'http://nbrno-backend.herokuapp.com/api/';
+var endpoint = window.location.hostname.indexOf("localhost") != -1 ? 'http://localhost:8081/api/' : 'http://nbrno-backend.herokuapp.com/api/';
 
 commonServices.factory('Common', function (Rapper, EventBus) {
 
@@ -71,12 +70,11 @@ rapperServices.factory('Rapper', ['$resource',function ($resource){
 userServices.factory('User', ['$resource', function ($resource){
   return $resource(endpoint + 'user/:destination', {}, {
     login: {method:'POST', params: {destination:"login"}},
+    loginCookie: {method:'POST', params: {destination:"cookie"}},
     signup: {method:'POST', params: {destination:"signup"}},
     logout: {method:'POST', params: {destination:"logout"}}
   });
 }]);
-
-
 
 eventBus.factory('EventBus', function () { 
   return {

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('nbrnoFrontendApp', ['commonServices', 'rapperServices', 'userServices', 'eventBus', 'ngRoute'])
+angular.module('nbrnoFrontendApp', ['commonServices', 'rapperServices', 'userServices', 'eventBus', 'ngRoute', 'ngCookies'])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
