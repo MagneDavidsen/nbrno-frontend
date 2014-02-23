@@ -3,11 +3,11 @@
         Du er logget inn som <b>{{loginUser}}</b> - <a  href="#" ng-click="logout()">Logg ut</a>
     </div>
 
-    <div class="loggedoutbar" ng-show="!loggedIn && !loginVisible">
-        <a href="" ng-click="showLogin()">Logg inn</a>
+    <div class="loggedoutbar" ng-show="!loggedIn && !eventBus.loginVisible">
+        <a class="btn btn-primary btn-large btn-block" href="" ng-click="showLogin()">Logg inn</a>
     </div>
 
-    <div ng-show="loginVisible">
+    <div ng-show="eventBus.loginVisible">
         <div class="login-panel">
             <h1 class="text-center">Du må logge inn for å stemme</h1>
 

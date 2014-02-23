@@ -1,14 +1,17 @@
 'use strict';
 
 angular.module('nbrnoFrontendApp')
-.controller('MainCtrl', function ($scope, Rapper, User) {
+.controller('MainCtrl', function ($scope, Rapper, User, EventBus, Common) {
 	$scope.predicate = ['score', '-name'];
-	$scope.rappersAndVotes = Rapper.query();
+	EventBus.rappersAndVotes = Rapper.query();
+	$scope.eventBus = EventBus
+	$scope.vote = Common.sendVote;
+
 });
 
 angular.module('nbrnoFrontendApp')
-.controller('LoginCtrl', function ($scope, $http, User) {
-	$scope.loginVisible;
+.controller('LoginCtrl', function ($scope, $http, User, EventBus, Common) {
+	$scope.eventBus = EventBus
 	$scope.loggedIn;
 
 	$scope.loginUser = "";
@@ -21,23 +24,52 @@ angular.module('nbrnoFrontendApp')
 	$scope.error = "";
 
 	$scope.showLogin = function () {
-		$scope.loginVisible = true;
+		EventBus.loginVisible = true;
 	}
 
 	function loggedIn(){
         console.log("logged in");
 
-        $scope.loginVisible = false;
+        EventBus.loginVisible = false;
         $scope.loggedIn = true;   
+
+        Common.sendUnauthorizedVote(notSignedup, notSignedup)
+        Common.updateRappersWithVotes()
     }
 
     function notLoggedIn(data, status, header){
         $scope.error = "Feil brukernavn eller passord"
     }
 
-	$scope.login = function () {
+    function notSignedup(data, status, header){
+        $scope.error = "Brukernavnet er ikke ledig"
+    }
 
-		User.login({username: $scope.loginUser, password: $scope.loginPassword}, loggedIn, notLoggedIn);		
-	}
+    function loginAfterSignup(){
+        $scope.loginUser = $scope.signupUser;
+        $scope.loginPassword = $scope.signupPassword;
+        $scope.login();
+    }
+
+    function loggedOut(data, status, header){
+        console.log("logged out")
+
+        $scope.loginUser = ""
+        $scope.loginPassword = ""
+
+        $scope.signupUser = ""
+        $scope.signupEmail = ""
+        $scope.signupPassword = ""
+
+        $scope.loggedIn = false;
+    }
+
+    function notLoggedOut(data, status, header){
+        console.log("could not log out")
+    }
+
+	$scope.login = function () {User.login({username: $scope.loginUser, password: $scope.loginPassword}, loggedIn, notLoggedIn);}
+	$scope.signup = function () {User.signup({username: $scope.signupUser, email: $scope.signupEmail, password: $scope.signupPassword}, loginAfterSignup, notSignedup);}
+	$scope.logout = function () {User.logout({username: $scope.loginUser}, loggedOut, notLoggedOut);}
 
 });

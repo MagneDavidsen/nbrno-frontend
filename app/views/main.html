@@ -4,14 +4,14 @@
   <h1>norgesbesterapper.no</h1>
   
   <div class="rapperList">
-      <div class="rapperRow" ng-repeat="rapper in rappersAndVotes.rappers | orderBy:predicate:true">
+      <div class="rapperRow" ng-repeat="rapper in eventBus.rappersAndVotes.rappers | orderBy:predicate:true">
       	<div class="rapperPosition">#{{$index + 1}}</div>
       	<div class="rapperName"><h1>{{rapper.name}}</h1></div>
       	<div class="rapperVoteButton">
-      		<a  href="up"><span class="entypo-up-open-big" /></a>
+      		<a  ng-click="vote(rapper.id, true)" class="{{rapper.rating > 0 ? 'voted-up' : ''}}"><span class="entypo-up-open-big" /></a>
       	</div>
       	<div class="rapperVoteButton">
-      		<a href="down"><span class="entypo-down-open-big"/></a>
+      		<a  ng-click="vote(rapper.id, false)" class="{{rapper.rating < 0 ? 'voted-down' : ''}}"><span class="entypo-down-open-big"/></a>
       	</div>
 
       </div>

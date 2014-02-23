@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('nbrnoFrontendApp', ['rapperServices', 'userServices', 'ngRoute'])
+angular.module('nbrnoFrontendApp', ['commonServices', 'rapperServices', 'userServices', 'eventBus', 'ngRoute'])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -20,6 +20,8 @@ angular.module('nbrnoFrontendApp', ['rapperServices', 'userServices', 'ngRoute']
     };}).
   config(['$httpProvider', function($httpProvider) {
         $httpProvider.defaults.useXDomain = true;
+        $httpProvider.defaults.withCredentials = true;
+
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
     }
 ]);
