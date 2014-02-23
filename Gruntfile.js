@@ -16,6 +16,7 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
 
+
   // configurable paths
   var yeomanConfig = {
     app: 'app',
@@ -25,6 +26,8 @@ module.exports = function (grunt) {
   try {
     yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
   } catch (e) {}
+
+  grunt.loadNpmTasks('grunt-shell');
 
   grunt.initConfig({
     yeoman: yeomanConfig,
@@ -55,6 +58,14 @@ module.exports = function (grunt) {
           '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      }
+    },
+    shell: {
+      'git-add-dist': {
+        command: 'git add '
+      },
+      'git-commit-build': {
+        command: 'git commit -am"build"'
       }
     },
     autoprefixer: {
@@ -383,7 +394,9 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'rev',
-    'usemin'
+    'usemin',
+    'shell:git-add-dist',
+    'shell:git-commit-build'
   ]);
 
   grunt.registerTask('default', [
