@@ -23,13 +23,16 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  var pkg = require('./package.json');
+
   try {
     yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
   } catch (e) {}
 
-  grunt.loadNpmTasks('grunt-shell');
+  grunt.loadNpmTasks('grunt-build-control');
 
   grunt.initConfig({
+    
     yeoman: yeomanConfig,
     watch: {
       coffee: {
@@ -60,17 +63,7 @@ module.exports = function (grunt) {
         ]
       }
     },
-    shell: {
-      'git-add-dist': {
-        command: 'git add '
-      },
-      'git-commit-build': {
-        command: 'git commit -am"build"'
-      },
-      'heroku': {
-      command: 'git push heroku master'
-      }
-    },
+
     autoprefixer: {
       options: ['last 1 version'],
       dist: {
@@ -82,6 +75,27 @@ module.exports = function (grunt) {
         }]
       }
     },
+     buildcontrol: {
+        options: {
+          dir: 'dist',
+          commit: true,
+          push: true,
+          message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+        },
+        heroku: {
+          options: {
+            remote: 'git@heroku.com:nbrno.git',
+            branch: 'master',
+            tag: pkg.version
+          }
+        },
+        local: {
+          options: {
+            remote: '../',
+            branch: 'build'
+          }
+        }
+      },
     connect: {
       options: {
         port: 9000,
@@ -385,7 +399,6 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
-  grunt.registerTask('heroku', ['build', 'shell:heroku']);
 
   grunt.registerTask('build', [
     'clean:dist',
@@ -399,9 +412,7 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'rev',
-    'usemin',
-    'shell:git-add-dist',
-    'shell:git-commit-build'
+    'usemin'
   ]);
 
   grunt.registerTask('default', [
