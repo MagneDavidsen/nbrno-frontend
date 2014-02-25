@@ -37,18 +37,7 @@ commonServices.factory('Common', function (Rapper, EventBus) {
   var sendVote = function(rapperId, voteUp){
     var votedSuccess = function(){
       for(var i = 0; i < EventBus.rappersAndVotes.rappers.length; i++){
-        if(EventBus.rappersAndVotes.rappers[i].id == rapperId){
-          
-          //update score
-          if(voteUp){
-            var scoreIncrease = 1 - EventBus.rappersAndVotes.rappers[i].rating;
-            EventBus.rappersAndVotes.rappers[i].score += scoreIncrease;
-          } else {
-            var scoreDecrease = -1 - EventBus.rappersAndVotes.rappers[i].rating;
-            EventBus.rappersAndVotes.rappers[i].score += scoreDecrease;
-          }
-          
-          //update rating
+        if(EventBus.rappersAndVotes.rappers[i].id === rapperId){
           EventBus.rappersAndVotes.rappers[i].rating = voteUp ? 1 : -1;
         } 
       }
